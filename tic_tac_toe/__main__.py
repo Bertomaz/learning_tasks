@@ -2,7 +2,7 @@ from board import create_empty_board, set_player, get_player, is_occupied
 from constants import PLAYER_O, PLAYER_X
 
 board_state = int(1)
-current_player = (PLAYER_O)
+current_player = str(PLAYER_X)
 winner = None
 
 board_state = set_player(1,1,1,PLAYER_O )
@@ -10,7 +10,7 @@ board_state = set_player(1,1,1,PLAYER_O )
                        
 
 
-        
+################################### Plot Board ######################################        
   
 def board_pos(board_state):
     pos_1 = get_player(board_state,1,1)
@@ -35,8 +35,24 @@ def print_board(board_state):
             board_positionen[i] = " "
 
     print( board_positionen[0], "|"  ,board_positionen[1],"|", board_positionen[2])
+    print("--+---+---")
     print( board_positionen[3], "|"  ,board_positionen[4],"|", board_positionen[5])
+    print("--+---+---")
     print( board_positionen[6], "|"  ,board_positionen[7],"|", board_positionen[8])
-# prints the board state graphically
+# plots the board state
 
-print_board(board_state)
+
+################################### switch Player ###################################
+
+def next_player(current_player):
+    
+    if current_player == PLAYER_O:
+        current_player = PLAYER_X
+    else:
+        current_player = PLAYER_O
+    print("der nächste spieler ist", current_player)
+    return current_player
+
+current_player = next_player(current_player)
+
+
