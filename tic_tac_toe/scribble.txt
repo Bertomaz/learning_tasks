@@ -1,0 +1,14 @@
+ 
+
+ 
+board_positionen= board_pos(board_state)
+
+for i in range(len(board_positionen)):
+    if board_positionen[i] == None:
+        board_positionen[i] = " "
+
+print( board_positionen[0], "|"  ,board_positionen[1],"|", board_positionen[2])
+print( board_positionen[3], "|"  ,board_positionen[4],"|", board_positionen[5])
+print( board_positionen[6], "|"  ,board_positionen[7],"|", board_positionen[8])
+
+
