@@ -1,0 +1,34 @@
+from random import choices
+
+class DnaSequencer:
+
+    BASES = ["A", "C", "G", "T"]
+    # If it is written at the indentation level
+    # directly below the class header, it is a class attribute
+    # This time in upper case because we want this to be treated
+    # as a constant, which are written this way by convention
+
+    def __init__(self, serial_number, is_clean = False):
+        self.serial_number = serial_number
+        self.is_clean = is_clean
+
+    def clean(self):
+        self.is_clean = True
+        print("DNA sequencer", self.serial_number, "has been cleaned")
+
+    def analyze_sample(self, sample):
+        if not self.is_clean:
+            print("Sequencer", self.serial_number, "is still dirty - abort")
+            return
+
+        sequence_length = 2000
+        dna_sequence = "".join(
+            choices(
+                DnaSequencer.BASES,  # Note how it is accessed
+                k=sequence_length
+            )
+        )
+        sample.take_analysis_result(dna_sequence)
+
+        # Analysis done, device got dirty
+        self.is_clean = False
