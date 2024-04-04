@@ -8,9 +8,12 @@ my_sample = Sample("0123", "Darwin", GALAPAGOS)
 my_sequencer = DnaSequencer("C3P0", "Dna_Sequencer", True)
 #my_sequencer.clean()
 #my_sequencer.analyze_sample(my_sample)
+
 my_rna_sequencer = RnaSequencer("R2D2", "Rna_Sequencer", True)
 
 my_experiment = Experiment(my_sequencer, my_rna_sequencer)
+
+my_experiment.run(my_sample)
 
 #############################################################
 
