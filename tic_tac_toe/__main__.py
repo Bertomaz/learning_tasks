@@ -98,17 +98,49 @@ def check_victory(board_state):
     continue_check_row = True
     continue_check_column = True
     Continue_check_diagonals = True
-    player_in_cell = None
-        
+    horizontal_checking_row = 0
+    horizontal_checking_column = 0
+    player_in_cell = "irgendwas is falsch"
+#checking if there is a victory in the rows
+    print("1")
     while continue_check_row:
-        checking_row = 0
-        checking_column = 0
         row_in_sequnce = 0
-        while checking_row > 3 and checking_column > 3:
-            if get_player(board_state, checking_row, checking_column):
-                player_in_cell = get_player(board_state, checking_row, checking_column)
-                
+        check_this_row = True
+        player_in_cell = None
+        print("2")
+        while check_this_row:
+            #check if there is a player marker in the cell
+            print("3")
+            if get_player(board_state, horizontal_checking_row, horizontal_checking_column):
+                #check if player is the same as in the cell before that
+                print("4")
+                if player_in_cell == get_player(board_state, horizontal_checking_row, horizontal_checking_column):
+                    # if its the same Player add to the counter
+                    row_in_sequence = row_in_sequence +1
+                    horizontal_checking_column = horizontal_checking_column +1
+                else:
+                    horizontal_checking_row = horizontal_checking_row + 1
+                    horizontal_checking_column = 0
+                    row_in_sequence = 0
 
+                # if the row_in_sequence counter is at 3 the player is the winner
+                if row_in_sequence == 3:
+                    winner = player_in_cell
+                    print("45555555555555555555555555")
+                    
+            #pass this row if there is no player marker in the cell
+            
+            
+            print("dsfgsdf")    
+            
+            # end while loop if all cells are checked (row 3 and column 3 are checked)
+            horizontal_checking_row = horizontal_checking_row +1
+            if horizontal_checking_row > 2:
+                continue_check_row = False
+        print("ende der schleife check_this_row")
+        continue_check_row = False
+
+# checking if there is a voctory in the columns
 
 
 

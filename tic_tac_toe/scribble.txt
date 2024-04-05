@@ -1,14 +1,39 @@
  
+-----set next marker
 
- 
-board_positionen= board_pos(board_state)
+board_state = set_player(board_state,1 ,1 ,current_player)
 
-for i in range(len(board_positionen)):
-    if board_positionen[i] == None:
-        board_positionen[i] = " "
+------------
 
-print( board_positionen[0], "|"  ,board_positionen[1],"|", board_positionen[2])
-print( board_positionen[3], "|"  ,board_positionen[4],"|", board_positionen[5])
-print( board_positionen[6], "|"  ,board_positionen[7],"|", board_positionen[8])
+print_board(board_state)
 
 
+----------Next player:
+
+current_player = next_player(current_player)
+
+
+
+
+>>> board_state
+44472577
+>>> check_victory(board_state)
+Traceback (most recent call last):
+  File "<pyshell#32>", line 1, in <module>
+    check_victory(board_state)
+  File "/home/boehl28/Desktop/hifis übungen python/tic_tac_toe/__main__.py", line 111, in check_victory
+    if get_player(board_state, horizontal_checking_row, horizontal_checking_column):
+  File "/home/boehl28/Desktop/hifis übungen python/tic_tac_toe/board.py", line 71, in get_player
+    flags = (board_state >> _offset(row, column)) & 0b11
+KeyboardInterrupt
+
+>>> 
+ RESTART: /home/boehl28/Desktop/hifis übungen python/tic_tac_toe/__main__.py 
+>>> board_state = 44472577
+>>> print_board(board_state)
+X | 0 | X
+--+---+---
+0 | 0 | X
+--+---+---
+0 | 0 | 0
+>>> check_victory(board_state)
