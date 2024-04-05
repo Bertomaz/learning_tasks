@@ -5,7 +5,7 @@ board_state = int(1)
 current_player = str(PLAYER_X)
 winner = None
 
-board_state = set_player(1,1,1,PLAYER_O )
+
     
                        
 
@@ -41,11 +41,9 @@ def print_board(board_state):
     print( board_positionen[6], "|"  ,board_positionen[7],"|", board_positionen[8])
 # plots the board state
 
-
 ################################### switch Player ###################################
 
 def next_player(current_player):
-    
     if current_player == PLAYER_O:
         current_player = PLAYER_X
     else:
@@ -53,6 +51,62 @@ def next_player(current_player):
     print("der nächste spieler ist", current_player)
     return current_player
 
-current_player = next_player(current_player)
+#current_player = next_player(current_player)
+
+################################## input row and column #############################
+
+
+
+def input_row():
+    try_input = True
+    input_row = ''
+    while try_input:
+        input_try_row = input("please put in a row between 1 and 3:")
+        if input_try_row.isdigit():
+            input_try_row = int(input_try_row)
+            if 0 < input_try_row < 4:
+                input_row = input_try_row - 1
+                try_input = False
+            else:
+                print("ups! your number is not in the range 1 to 3, please try Again ->")
+        else:
+            print("ups! something went wrong, please try Again ->")
+    return input_row
+
+
+def input_column():
+    try_input = True
+    input_column = ''
+    while try_input:
+        input_try_column = input("please put in a column between 1 and 3:")
+        if input_try_column.isdigit():
+            input_try_column = int(input_try_column)
+            if 0 < input_try_column < 4:
+                input_column = input_try_column - 1
+                try_input = False
+            else:
+                print("ups! your number is not in the range 1 to 3, please try Again ->")
+        else:
+            print("ups! something went wrong, please try Again ->")
+    return input_column            
+
+################################## check for victory #############################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
