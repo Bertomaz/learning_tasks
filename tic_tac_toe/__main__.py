@@ -93,6 +93,22 @@ def input_column():
 ################################## check for victory #############################
 
 
+def check_victory(board_state):
+    winner = None
+    continue_check_row = True
+    continue_check_column = True
+    Continue_check_diagonals = True
+    player_in_cell = None
+        
+    while continue_check_row:
+        checking_row = 0
+        checking_column = 0
+        row_in_sequnce = 0
+        while checking_row > 3 and checking_column > 3:
+            if get_player(board_state, checking_row, checking_column):
+                player_in_cell = get_player(board_state, checking_row, checking_column)
+                
+
 
 
 
