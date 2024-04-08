@@ -149,7 +149,7 @@ def check_victory(board_state):
                     winner = player_in_cell
 #                    print("if row in sequence is 3 player in cell is winner")
                     check_this_row = False
-                    print("the winner is :", winner)
+#                    print("the winner is :", winner)
                     
             #pass this row if there is no player marker in the cell
             
@@ -169,67 +169,62 @@ def check_victory(board_state):
         continue_check_row = False
     
 #----------------------------------------------------- checking if there is a victory in the columns
-
+    
     if winner == None:
         while continue_check_column:
                 column_in_sequence = 0
                 check_this_column = True
                 player_in_cell = None
- #               print("while continue_check_column")
+     #           print("while continue_check_column")
                 while check_this_column:
                     #check if there is a player marker in the cell
- #                   print("while check_this_column")
- #                   print(vertical_checking_row, vertical_checking_column)
- #                   print(get_player(board_state, vertical_checking_row, vertical_checking_column))
                     if get_player(board_state, vertical_checking_row, vertical_checking_column):
                         #check if player is the same as in the cell before that
- #                       print("check if player is the same as in the cell before")
                         if vertical_checking_row == 1:
                             #if the first column is checked, cheange the player_in_cell to the player
                             player_in_cell = get_player(board_state, vertical_checking_row, vertical_checking_column)
+
                             
                         if player_in_cell == get_player(board_state, vertical_checking_row, vertical_checking_column):
                             # if its the same Player add to the counter
                             column_in_sequence = column_in_sequence +1
                             vertical_checking_row = vertical_checking_row +1
- #                           print("player is the same as in the former cell, sequence counter", row_in_sequence)
- #                           print("player in cell:", player_in_cell)
                         else:
-                            if vertical_checking_row < 3:
+                            if vertical_checking_column < 4:
                                 vertical_checking_column = vertical_checking_column + 1
                                 vertical_checking_row = 1
                                 column_in_sequence = 0
                                 player_in_cell = None
- #                               print("player not the same as in the cell before, restarting in next row")
                             else: #if there is no win in the last cell:
                                 player_in_cell = None
                                 check_this_column = False
- #                               print("no win in the last row either :(")
+    #                            print("no win in the last row either :(")
                             
                             
 
                         # if the row_in_sequence counter is at 3 the player is the winner
                         if column_in_sequence == 3:
                             winner = player_in_cell
- #                           print("if row in sequence is 3 player in cell is winner")
-                            check_this_column = False
- #                           print("the winner is :", winner)
+    #                        print("if row in sequence is 3 player in cell is winner")
+                            check_this_column = False                        
+    #                        print("the winner is :", winner)
                             
                     #pass this row if there is no player marker in the cell
                     
                     else:
                         vertical_checking_column = vertical_checking_column + 1
- #                       print("there was no player in that cell, skip to next column")
+    #                    print("there was no player in that cell, skip to next column")
                         
                     
                     # end while loop if all cells are checked (row 3 and column 3 are checked)
                     
                     if vertical_checking_column > 3:
-                        check_this_row = False
+                        check_this_column = False
                         
- #                   print("vertical_checking_row :" , vertical_checking_column)
- #                   print("winner:" ,winner)
- #                   print("ende der schleife check_this_column")
+    #                print("vertical_checking_column :" , vertical_checking_column)
+    #                print("vertical_checking_row :" , vertical_checking_row)
+    #                print("winner:" ,winner)
+    #                print("ende der schleife check_this_column")
                 continue_check_column = False
 
 
@@ -253,7 +248,7 @@ def check_victory(board_state):
             
                         
 #-------------------------------------------------------check if there is a draw
-
+    
     if not winner:
         check_for_occupancy = True
         check_for_occupancy_row = 1
