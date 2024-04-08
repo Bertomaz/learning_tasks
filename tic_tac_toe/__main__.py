@@ -236,8 +236,20 @@ def check_victory(board_state):
 
     if winner == None:
         while continue_check_diagonals:
+            player_in_cell = None
+            if get_player(board_state, 1,1):
+                player_in_cell = get_player(board_state,1,1)
+                if get_player(board_state,2,2) == player_in_cell:
+                    if get_player(board_state,3,3) == player_in_cell:
+                        winner = player_in_cell
+            elif get_player(board_state,3,1):
+                player_in_cell = get_player(board_state,3,1)
+                if get_player(board_state,2,2) == player_in_cell:
+                    if get_player(board_state,1,3) == player_in_cell:
+                        winner = player_in_cell
+                
 
-
+    return winner
 
 
 
