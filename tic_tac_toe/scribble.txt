@@ -60,4 +60,18 @@ X | X | 0
 0 | X | 0
 >>> board_state
 40458497
+>>>
+
+
+
+
+board_state
+>>> board_state
+9868800
+>>> print_board(board_state)
+0 | X | X
+--+---+---
+0 | 0 | X
+--+---+---
+X | 0 |  
 >>> 
