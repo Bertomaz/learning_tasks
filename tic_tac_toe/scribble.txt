@@ -37,3 +37,27 @@ X | 0 | X
 --+---+---
 0 | 0 | 0
 >>> check_victory(board_state)
+
+
+>>> board_state
+23501057
+>>> print_board(board_state)
+X | 0 | X
+--+---+---
+0 | 0 | X
+--+---+---
+0 | X | X
+>>>
+
+
+
+
+>>> print_board(board_state)
+X | 0 | X
+--+---+---
+X | X | 0
+--+---+---
+0 | X | 0
+>>> board_state
+40458497
+>>> 

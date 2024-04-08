@@ -103,6 +103,7 @@ def check_victory(board_state):
     vertical_checking_row = 1
     vertical_checking_column = 1
     player_in_cell = "irgendwas is falsch"
+
     
 #------------------------------------------------------checking if there is a victory in the rows
     
@@ -217,7 +218,7 @@ def check_victory(board_state):
                     
                     else:
                         vertical_checking_column = vertical_checking_column + 1
-        #                print("there was no player in that cell, skip to next row")
+        #                print("there was no player in that cell, skip to next column")
                         
                     
                     # end while loop if all cells are checked (row 3 and column 3 are checked)
@@ -225,9 +226,9 @@ def check_victory(board_state):
                     if horizontal_checking_row > 3:
                         check_this_row = False
                         
-        #            print("horizontal_checking_row :" , horizontal_checking_row)
+        #            print("vertical_checking_row :" , vertical_checking_column)
         #            print("winner:" ,winner)
-        #            print("ende der schleife check_this_row ####################################################")
+        #            print("ende der schleife check_this_column")
                 continue_check_column = False
 
 
@@ -235,20 +236,52 @@ def check_victory(board_state):
 
 
     if winner == None:
-        while continue_check_diagonals:
-            player_in_cell = None
-            if get_player(board_state, 1,1):
-                player_in_cell = get_player(board_state,1,1)
-                if get_player(board_state,2,2) == player_in_cell:
-                    if get_player(board_state,3,3) == player_in_cell:
-                        winner = player_in_cell
-            elif get_player(board_state,3,1):
-                player_in_cell = get_player(board_state,3,1)
-                if get_player(board_state,2,2) == player_in_cell:
-                    if get_player(board_state,1,3) == player_in_cell:
-                        winner = player_in_cell
+        player_in_cell = None
+        if get_player(board_state, 1,1):
+            player_in_cell = get_player(board_state,1,1)
+            if get_player(board_state,2,2) == player_in_cell:
+                if get_player(board_state,3,3) == player_in_cell:
+                    winner = player_in_cell
+                    
+        elif get_player(board_state,3,1):
+            player_in_cell = get_player(board_state,3,1)
+            if get_player(board_state,2,2) == player_in_cell:
+                if get_player(board_state,1,3) == player_in_cell:
+                    winner = player_in_cell
+                    
+            
+                        
+#-------------------------------------------------------check if there is a draw
+    
+    if not winner:
+        check_for_occupancy = True
+        check_for_occupancy_row = 1
+        check_for_occupancy_column = 1
+        occupied_cells = 0
+        
+        while check_for_occupancy:
+            
+            #print("column:",check_for_occupancy_column)
+            #print("row:", check_for_occupancy_row)
+            if get_player(board_state, check_for_occupancy_row, check_for_occupancy_column ):
+                occupied_cells = occupied_cells + 1
+                check_for_occupancy_column = check_for_occupancy_column +1
                 
+                
+                
+            if  occupied_cells == 9:   
+                winner = "draw"
+                print("it is a draw")
+                
+            if check_for_occupancy_column == 4:
+                check_for_occupancy_column = 1
+                check_for_occupancy_row = check_for_occupancy_row +1
+                if check_for_occupancy_row == 4:
+                    check_for_occupancy = False
+            #print("occupied_cells:", occupied_cells)
 
+
+                
     return winner
 
 
